@@ -1,4 +1,4 @@
-package com.xianting.yoga.studio;
+package com.qianting.yoga.studio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
