@@ -1,16 +1,18 @@
 package com.qianting.yoga.studio.domian.entity;
-import java.util.Date;
-import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.util.Date;
+
 /**
  * 用户表，存储系统中的用户信息(User)表实体类
  *
  * @author makejava
- * @since 2024-10-27 18:26:00
+ * @since 2024-10-27 19:37:16
  */
 @SuppressWarnings("serial")
 @Data
