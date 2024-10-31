@@ -44,5 +44,16 @@ public class UserController  {
     public ResponseResult updataUserInformation(@RequestBody UserVo user){
         return userService.updataUserInformation(user);
     }
+
+    /**
+     * 用户注册
+     * @param user 不允许传用户id，该属性由数据库自增完成
+     * @return
+     */
+    @PostMapping("/register")
+    public ResponseResult register(@RequestBody UserVo user){
+       return userService.register(user);
+
+    }
 }
 
