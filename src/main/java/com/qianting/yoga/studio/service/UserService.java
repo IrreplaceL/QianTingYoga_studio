@@ -3,6 +3,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.repository.IRepository;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 import com.qianting.yoga.studio.domian.entity.User;
+import com.qianting.yoga.studio.domian.vo.UserVo;
 
 /**
  * 用户表，存储系统中的用户信息(User)表服务接口
@@ -12,4 +13,6 @@ import com.qianting.yoga.studio.domian.entity.User;
  */
 public interface UserService extends IService<User> {
     ResponseResult userInformationList();
+
+    ResponseResult updataUserInformation(UserVo user);
 }

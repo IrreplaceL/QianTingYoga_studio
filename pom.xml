@@ -41,16 +41,16 @@
             <scope>runtime</scope>
         </dependency>
        <!--        Swagger配置-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger2</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger-ui</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
         <!--lombk-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -59,8 +59,7 @@
             <version>1.18.34</version>
         </dependency>
         <!--junit-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
+        <dependency><groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>3.3.5</version>
         </dependency>

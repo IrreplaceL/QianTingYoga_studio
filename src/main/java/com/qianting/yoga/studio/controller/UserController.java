@@ -1,19 +1,18 @@
 package com.qianting.yoga.studio.controller;
 
 
-
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
+import com.qianting.yoga.studio.domian.entity.User;
+import com.qianting.yoga.studio.domian.vo.UserVo;
 import com.qianting.yoga.studio.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
 /**
- * 用户表，存储系统中的用户信息(User)表控制层
  *
+ * 用户
  * @author makejava
  * @since 2024-10-27 18:25:58
  */
@@ -25,11 +24,25 @@ public class UserController  {
     @Autowired
     private UserService userService;
 
+    /**
+     * 获取全部用户数据，按照userId升序排列
+     * @return
+     */
     @GetMapping("/userInformationList")
     public ResponseResult userInformationList(){
         log.info("执行该方法");
         ResponseResult result = userService.userInformationList();
         return result;
         }
+
+    /**
+     * 更新用户数据
+      * @param user 用户实体类
+     * @return
+     */
+    @PostMapping("/updataUserInformation")
+    public ResponseResult updataUserInformation(@RequestBody UserVo user){
+        return userService.updataUserInformation(user);
+    }
 }
 

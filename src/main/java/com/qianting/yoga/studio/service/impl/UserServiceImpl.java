@@ -11,6 +11,8 @@ import com.qianting.yoga.studio.utils.BeanCopyUtils;
 import org.springframework.stereotype.Service;
 import com.qianting.yoga.studio.domian.entity.User;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import static com.baomidou.mybatisplus.extension.toolkit.Db.page;
@@ -39,5 +41,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return ResponseResult.successResult(articleVos);
 
 
+    }
+
+    @Override
+    public ResponseResult updataUserInformation(UserVo userVo) {
+        User user = BeanCopyUtils.copyBean(userVo,User.class);
+        user.setUpdateTime(new Date());
+        updateById(user);
+        return ResponseResult.successResult();
     }
 }
