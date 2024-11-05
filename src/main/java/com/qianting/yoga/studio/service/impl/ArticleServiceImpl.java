@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianting.yoga.studio.domian.entity.Article;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
-import com.qianting.yoga.studio.domian.entity.User;
 import com.qianting.yoga.studio.mapper.ArticleMapper;
 import com.qianting.yoga.studio.service.ArticleService;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,7 @@ import java.util.List;
 @Service("articleService")
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
     @Override
-    public ResponseResult articlerListInformation() {
+    public ResponseResult articleListInformation() {
         LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
         //按照用户id升序排列
         queryWrapper.orderByAsc(Article::getArticleId);

@@ -2,7 +2,6 @@ package com.qianting.yoga.studio.controller;
 
 
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
-import com.qianting.yoga.studio.domian.entity.User;
 import com.qianting.yoga.studio.domian.vo.UserVo;
 import com.qianting.yoga.studio.service.UserService;
 import lombok.extern.slf4j.Slf4j;
