@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author Me
  * @version 1.0
@@ -29,4 +31,8 @@ public class UserVo {
     private String avatar;
     //身份类型（如：管理员为0、老师为1、学生为2）
     private Integer identity;
+    //用户创建时间
+    private Date createTime;
+    //用户信息更新时间
+    private Date updateTime;
 }
