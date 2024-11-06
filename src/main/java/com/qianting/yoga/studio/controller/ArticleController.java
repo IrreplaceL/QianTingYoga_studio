@@ -1,12 +1,11 @@
 package com.qianting.yoga.studio.controller;
 
+import com.qianting.yoga.studio.domian.entity.Article;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 import com.qianting.yoga.studio.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 文章
@@ -30,5 +29,15 @@ public class ArticleController {
    @GetMapping("/articleInformationList")
    public ResponseResult articleListInformation(){
       return articleService. articleListInformation();
+   }
+
+    /**
+     * 更新文章，（新增和更改，id設置參考課程表，注意    "createUserId": 1,應該為用戶表主鍵，已在數據庫設置外鍵關聯，用戶表沒有該id將更新失敗，    更新操作時，"articleId": 3,應爲存在數據庫中文章表的主鍵，否則更新失敗）
+     * @param article
+     * @return
+     */
+   @PostMapping("/articleUpdata")
+    public ResponseResult articleUpdata(@RequestBody Article article){
+       return articleService.articleUpdata(article);
    }
 }

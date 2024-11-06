@@ -11,4 +11,6 @@ import com.qianting.yoga.studio.domian.entity.ResponseResult;
  */
 public interface ArticleService extends IService<Article> {
     ResponseResult articleListInformation();
+
+    ResponseResult articleUpdata(Article article);
 }

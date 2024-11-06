@@ -9,6 +9,7 @@ import com.qianting.yoga.studio.service.ArticleService;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,5 +32,18 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //利用工具类
         return ResponseResult.successResult(articles);
 
+    }
+
+    @Override
+    public ResponseResult articleUpdata(Article article) {
+        if(article.getArticleId() == null){
+            article.setCreateTime(new Date());
+            article.setUpdateTime(new Date());
+            save(article);
+        }else {
+            updateById(article);
+            article.setUpdateTime(new Date());
+        }
+        return ResponseResult.successResult();
     }
 }
