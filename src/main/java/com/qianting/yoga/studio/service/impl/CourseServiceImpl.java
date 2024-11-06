@@ -9,6 +9,7 @@ import com.qianting.yoga.studio.mapper.CourseMapper;
 import com.qianting.yoga.studio.service.CourseService;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,4 +33,16 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         return ResponseResult.successResult(courses);
 
     }
+
+    @Override
+    public ResponseResult updataCourse(Course course) {
+        if(course.getCourseId() == null){
+            course.setCreateTime(new Date());
+            course.setUpdateTime(new Date());
+        save(course);
+        }else {
+        updateById(course);
+        course.setUpdateTime(new Date());
+    }
+        return ResponseResult.successResult();}
 }

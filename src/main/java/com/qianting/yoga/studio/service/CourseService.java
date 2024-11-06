@@ -11,4 +11,6 @@ import com.qianting.yoga.studio.domian.entity.ResponseResult;
  */
 public interface CourseService extends IService<Course> {
     ResponseResult courseListInformation();
+
+    ResponseResult updataCourse(Course course);
 }

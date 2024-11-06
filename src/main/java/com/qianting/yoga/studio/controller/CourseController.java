@@ -1,12 +1,11 @@
 package com.qianting.yoga.studio.controller;
 
+import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 import com.qianting.yoga.studio.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 课程表
@@ -32,4 +31,15 @@ public class CourseController {
     public ResponseResult courseListInformation(){
         return courseService.courseListInformation();
     }
+
+    /**
+     * 对课程表进行更新或新增操作
+     * @param course 不传id为新增，传id为新增。（只需传入courseId（新增时），courseName，courseContent，category）
+     * @return
+     */
+    @PostMapping("/updataCourse")
+    public ResponseResult updataCourse(@RequestBody Course course){
+        return courseService.updataCourse(course);
+    }
+
 }
