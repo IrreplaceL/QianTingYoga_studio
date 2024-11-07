@@ -76,5 +76,25 @@ public class UserController  {
     public ResponseResult deleteUser(@RequestBody User user){
         return userService.deleteUser(user);
     }
+
+    /**
+     * 根据id查找用户信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/userInformationById/{id}")
+    public ResponseResult userInformationById(@PathVariable Integer id){
+        return userService.userInformationById(id);
+    }
+
+    /**
+     * 用户登陆接口
+     * @param user
+     * @return
+     */
+    @PostMapping("/userlogin")
+    public ResponseResult userLogin(@RequestBody UserVo user){
+        return userService.userLgin(user);
+    }
 }
 

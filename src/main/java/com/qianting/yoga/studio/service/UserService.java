@@ -21,4 +21,8 @@ public interface UserService extends IService<User> {
     ResponseResult updataCourse(User user);
 
     ResponseResult deleteUser(User user);
+
+    ResponseResult userInformationById(Integer id);
+
+    ResponseResult userLgin(UserVo user);
 }

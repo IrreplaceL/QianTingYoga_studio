@@ -1,6 +1,7 @@
 package com.qianting.yoga.studio.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
@@ -30,6 +31,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private UserMapper userMapper;
+
 
     @Override
     public ResponseResult userInformationList() {
@@ -98,6 +100,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public ResponseResult deleteUser(User user) {
         userMapper.deleteById(user.getUserId());
        return ResponseResult.successResult();
+    }
+
+    @Override
+    public ResponseResult userInformationById(Integer id) {
+        User byId = getById(id);
+        return ResponseResult.successResult(byId);
+    }
+
+    @Override
+    public ResponseResult userLgin(UserVo user) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username",user.getUsername());
+        if ( getOne(queryWrapper).getPassword() .equals(user.getPassword()) )
+            return ResponseResult.successResult();
+        else
+            throw new RuntimeException("用户名与密码不一致，登陆失败");
     }
 
 
