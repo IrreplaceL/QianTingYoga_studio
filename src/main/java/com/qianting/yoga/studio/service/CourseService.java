@@ -13,4 +13,6 @@ public interface CourseService extends IService<Course> {
     ResponseResult courseListInformation();
 
     ResponseResult updataCourse(Course course);
+
+    ResponseResult deleteCourse(Course course);
 }

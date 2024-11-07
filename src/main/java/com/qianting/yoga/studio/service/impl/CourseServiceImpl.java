@@ -7,6 +7,7 @@ import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 import com.qianting.yoga.studio.mapper.CourseMapper;
 import com.qianting.yoga.studio.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,6 +21,9 @@ import java.util.List;
  */
 @Service("courseService")
 public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> implements CourseService {
+
+    @Autowired
+    private CourseMapper courseMapper;
     @Override
     public ResponseResult courseListInformation() {
         LambdaQueryWrapper<Course> queryWrapper = new LambdaQueryWrapper<>();
@@ -45,4 +49,10 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         course.setUpdateTime(new Date());
     }
         return ResponseResult.successResult();}
+
+    @Override
+    public ResponseResult deleteCourse(Course course) {
+       courseMapper.deleteById(course.getCourseId());
+       return ResponseResult.successResult();
+    }
 }

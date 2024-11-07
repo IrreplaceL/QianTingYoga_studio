@@ -2,6 +2,7 @@ package com.qianting.yoga.studio.controller;
 
 import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
+import com.qianting.yoga.studio.domian.entity.User;
 import com.qianting.yoga.studio.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,8 @@ public class CourseController {
     public ResponseResult updataCourse(@RequestBody Course course){
         return courseService.updataCourse(course);
     }
-
+    @PostMapping("/deleteCourse")
+    public ResponseResult deleteCourse(@RequestBody Course course){
+        return courseService.deleteCourse(course);
+    }
 }
