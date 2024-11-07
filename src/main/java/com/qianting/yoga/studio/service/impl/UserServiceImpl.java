@@ -10,6 +10,7 @@ import com.qianting.yoga.studio.exception.SystemException;
 import com.qianting.yoga.studio.mapper.UserMapper;
 import com.qianting.yoga.studio.service.UserService;
 import com.qianting.yoga.studio.utils.BeanCopyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.qianting.yoga.studio.domian.entity.User;
 import org.springframework.util.StringUtils;
@@ -26,6 +27,10 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public ResponseResult userInformationList() {
 
@@ -87,6 +92,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             user.setUpdateTime(new Date());
         }
         return ResponseResult.successResult();
+    }
+
+    @Override
+    public ResponseResult deleteUser(User user) {
+        userMapper.deleteById(user.getUserId());
+       return ResponseResult.successResult();
     }
 
 

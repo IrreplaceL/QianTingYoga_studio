@@ -66,5 +66,15 @@ public class UserController  {
     public ResponseResult updataUser(@RequestBody User user){
         return userService.updataCourse(user);
     }
+
+    /**
+     * 根据id删除用户信息
+     * @param user
+     * @return
+     */
+    @PostMapping("/deleteUser")
+    public ResponseResult deleteUser(@RequestBody User user){
+        return userService.deleteUser(user);
+    }
 }
 
