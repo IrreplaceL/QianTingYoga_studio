@@ -1,6 +1,7 @@
 package com.qianting.yoga.studio.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qianting.yoga.studio.domian.entity.Article;
+import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 
 /**
@@ -13,4 +14,6 @@ public interface ArticleService extends IService<Article> {
     ResponseResult articleListInformation();
 
     ResponseResult articleUpdata(Article article);
+
+    ResponseResult deleteCourse(Article article);
 }

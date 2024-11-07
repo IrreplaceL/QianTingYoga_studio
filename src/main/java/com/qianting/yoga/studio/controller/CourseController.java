@@ -42,6 +42,12 @@ public class CourseController {
     public ResponseResult updataCourse(@RequestBody Course course){
         return courseService.updataCourse(course);
     }
+
+    /**
+     * 对课程表进行删除
+     * @param course
+     * @return
+     */
     @PostMapping("/deleteCourse")
     public ResponseResult deleteCourse(@RequestBody Course course){
         return courseService.deleteCourse(course);

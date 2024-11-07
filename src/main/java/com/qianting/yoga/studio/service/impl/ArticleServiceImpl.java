@@ -3,9 +3,11 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianting.yoga.studio.domian.entity.Article;
+import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 import com.qianting.yoga.studio.mapper.ArticleMapper;
 import com.qianting.yoga.studio.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -20,6 +22,8 @@ import java.util.List;
  */
 @Service("articleService")
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
+    @Autowired
+    private ArticleMapper articleMapper;
     @Override
     public ResponseResult articleListInformation() {
         LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
@@ -44,6 +48,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             updateById(article);
             article.setUpdateTime(new Date());
         }
+        return ResponseResult.successResult();
+    }
+
+    @Override
+    public ResponseResult deleteCourse( Article article) {
+        articleMapper.deleteById(articleMapper.deleteById(article.getArticleId()));
         return ResponseResult.successResult();
     }
 }

@@ -1,6 +1,7 @@
 package com.qianting.yoga.studio.controller;
 
 import com.qianting.yoga.studio.domian.entity.Article;
+import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
 import com.qianting.yoga.studio.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
@@ -40,4 +41,14 @@ public class ArticleController {
     public ResponseResult articleUpdata(@RequestBody Article article){
        return articleService.articleUpdata(article);
    }
+
+    /**
+     * 对课程表的删除（del_flag）
+     * @param article
+     * @return
+     */
+    @PostMapping("/deleteArticle")
+    public ResponseResult deleteAticle(@RequestBody Article article){
+        return articleService.deleteCourse(article);
+    }
 }
