@@ -76,6 +76,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return ResponseResult.successResult();
     }
 
+    @Override
+    public ResponseResult updataCourse(User user) {
+        if(user.getUserId() == null){
+            user.setCreateTime(new Date());
+            user.setUpdateTime(new Date());
+            save(user);
+        }else {
+            updateById(user);
+            user.setUpdateTime(new Date());
+        }
+        return ResponseResult.successResult();
+    }
+
 
     // todo jwt与用户授权登陆，好像应该不在这里
     // todo 自动填充字符段

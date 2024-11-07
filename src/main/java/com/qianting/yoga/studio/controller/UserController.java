@@ -1,7 +1,9 @@
 package com.qianting.yoga.studio.controller;
 
 
+import com.qianting.yoga.studio.domian.entity.Course;
 import com.qianting.yoga.studio.domian.entity.ResponseResult;
+import com.qianting.yoga.studio.domian.entity.User;
 import com.qianting.yoga.studio.domian.vo.UserVo;
 import com.qianting.yoga.studio.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +55,16 @@ public class UserController  {
     public ResponseResult register(@RequestBody UserVo user){
        return userService.register(user);
 
+    }
+
+    /**
+     * 更新和新增用户，管理员，用户，教师走该接口
+     * @param user 传参方式同课程表一样
+     * @return
+     */
+    @PostMapping("/updataUser")
+    public ResponseResult updataUser(@RequestBody User user){
+        return userService.updataCourse(user);
     }
 }
 
