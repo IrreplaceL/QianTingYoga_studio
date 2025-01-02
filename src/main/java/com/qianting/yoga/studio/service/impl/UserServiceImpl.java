@@ -36,18 +36,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResponseResult userInformationList() {
 
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-        //按照用户id升序排列
-        queryWrapper.orderByAsc(User::getUserId);
-        Page<User> page = new Page(1,10);
-        page(page,queryWrapper);
-        //封装响应
-        List<User> users = page.getRecords();
-        //利用工具类
-        List<UserVo> articleVos =
-                BeanCopyUtils.copyBeanList(users, UserVo.class);
-        return ResponseResult.successResult(articleVos);
+//        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+//        //按照用户id升序排列
+//        queryWrapper.orderByAsc(User::getUserId);
+//        Page<User> page = new Page(1,10);
+//        page(page,queryWrapper);
+//        //封装响应
+//        List<User> users = page.getRecords();
+//        //利用工具类
+//        List<UserVo> articleVos =
+//                BeanCopyUtils.copyBeanList(users, UserVo.class);
+//        return ResponseResult.successResult(articleVos);
 
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        // 按照用户id升序排列
+        queryWrapper.orderByAsc(User::getUserId);
+
+        // 直接获取所有用户记录，不进行分页
+        List<User> users = userMapper.selectList(queryWrapper);
+
+        // 利用工具类将用户列表转换为 UserVo 列表
+        List<UserVo> userVos = BeanCopyUtils.copyBeanList(users, UserVo.class);
+
+        return ResponseResult.successResult(userVos);
 
     }
 
@@ -116,6 +127,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return ResponseResult.successResult();
         else
             throw new RuntimeException("用户名与密码不一致，登陆失败");
+    }
+
+    @Override
+    public ResponseResult userInformationByUsername(String username) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", username);
+        return ResponseResult.successResult(userMapper.selectOne(queryWrapper));
     }
 
 

@@ -96,5 +96,15 @@ public class UserController  {
     public ResponseResult userLogin(@RequestBody UserVo user){
         return userService.userLgin(user);
     }
+
+    /**
+     * 通过用户名查找
+     * @param Username
+     * @return
+     */
+    @GetMapping("/userInformationByUsername/{Username}")
+    public ResponseResult userInformationByUsername(@PathVariable String Username){
+        return userService.userInformationByUsername(Username);
+    }
 }
 

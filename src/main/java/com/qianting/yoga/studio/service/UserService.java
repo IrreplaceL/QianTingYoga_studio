@@ -25,4 +25,6 @@ public interface UserService extends IService<User> {
     ResponseResult userInformationById(Integer id);
 
     ResponseResult userLgin(UserVo user);
+
+    ResponseResult userInformationByUsername(String username);
 }

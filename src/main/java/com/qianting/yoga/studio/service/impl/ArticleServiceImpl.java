@@ -26,16 +26,25 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     private ArticleMapper articleMapper;
     @Override
     public ResponseResult articleListInformation() {
-        LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
-        //按照用户id升序排列
-        queryWrapper.orderByAsc(Article::getArticleId);
-        Page<Article> page = new Page(1,10);
-        page(page,queryWrapper);
-        //封装响应
-        List<Article> articles = page.getRecords();
-        //利用工具类
-        return ResponseResult.successResult(articles);
+//        LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
+//        //按照用户id升序排列
+//        queryWrapper.orderByAsc(Article::getArticleId);
+//        Page<Article> page = new Page(1,10);
+//        page(page,queryWrapper);
+//        //封装响应
+//        List<Article> articles = page.getRecords();
+//        //利用工具类
+//        return ResponseResult.successResult(articles);
 
+        LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
+// 按照文章ID升序排列
+        queryWrapper.orderByAsc(Article::getArticleId);
+
+// 执行查询，获取所有匹配的数据
+        List<Article> articles = articleMapper.selectList(queryWrapper);
+
+// 封装响应
+        return ResponseResult.successResult(articles);
     }
 
     @Override

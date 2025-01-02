@@ -26,16 +26,25 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     private CourseMapper courseMapper;
     @Override
     public ResponseResult courseListInformation() {
-        LambdaQueryWrapper<Course> queryWrapper = new LambdaQueryWrapper<>();
-        //按照用户id升序排列
-        queryWrapper.orderByAsc(Course::getCourseId);
-        Page<Course> page = new Page(1,10);
-        page(page,queryWrapper);
-        //封装响应
-        List<Course> courses = page.getRecords();
-        //利用工具类
-        return ResponseResult.successResult(courses);
+//        LambdaQueryWrapper<Course> queryWrapper = new LambdaQueryWrapper<>();
+//        //按照用户id升序排列
+//        queryWrapper.orderByAsc(Course::getCourseId);
+//        Page<Course> page = new Page(1,10);
+//        page(page,queryWrapper);
+//        //封装响应
+//        List<Course> courses = page.getRecords();
+//        //利用工具类
+//        return ResponseResult.successResult(courses);
 
+        LambdaQueryWrapper<Course> queryWrapper = new LambdaQueryWrapper<>();
+// 按照课程ID升序排列
+        queryWrapper.orderByAsc(Course::getCourseId);
+
+// 执行查询，获取所有匹配的数据
+        List<Course> courses = courseMapper.selectList(queryWrapper);
+
+// 封装响应
+        return ResponseResult.successResult(courses);
     }
 
     @Override

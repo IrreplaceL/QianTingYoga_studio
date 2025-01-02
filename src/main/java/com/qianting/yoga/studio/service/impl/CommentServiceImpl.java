@@ -25,15 +25,25 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     private CommentMapper commentMapper;
     @Override
     public ResponseResult commentListInformation() {
+//        LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
+//        //按照用户id升序排列
+//        queryWrapper.orderByAsc(Comment::getCommentId);
+//        Page<Comment> page = new Page(1,10);
+//        page(page,queryWrapper);
+//        //封装响应
+//        List<Comment> courses = page.getRecords();
+//        //利用工具类
+//        return ResponseResult.successResult(courses);
+
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
-        //按照用户id升序排列
+// 按照评论ID升序排列
         queryWrapper.orderByAsc(Comment::getCommentId);
-        Page<Comment> page = new Page(1,10);
-        page(page,queryWrapper);
-        //封装响应
-        List<Comment> courses = page.getRecords();
-        //利用工具类
-        return ResponseResult.successResult(courses);
+
+// 执行查询，获取所有匹配的数据
+        List<Comment> comments = commentMapper.selectList(queryWrapper);
+
+// 封装响应
+        return ResponseResult.successResult(comments);
     }
 
     @Override
